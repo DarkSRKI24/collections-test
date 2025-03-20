@@ -1,0 +1,10 @@
+---
+import { getEntry } from 'astro:content';
+
+const { lang, slug } = Astro.params;
+const page = await getEntry('blog', `${lang}/${slug}`);
+
+if (!page) {
+  return Astro.redirect('/404');
+}
+---
