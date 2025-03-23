@@ -1,33 +1,29 @@
 ---
 import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const pages = await getCollection('blog');
 
-  return pages.map((page: CollectionEntry<'blog'>) => {
+  const paths = pages.map(page => {
     const [lang, ...slug] = page.slug.split('/');
-    return {
-      params: { 
-        lang, 
-        slug: slug.join('/') || undefined 
-      },
-      props: { page }
-    };
+    return { params: { lang, slug: slug.join('/') || undefined }, props: page };
   });
+
+  return paths;
 }
 
-const { page } = Astro.props as { page: CollectionEntry<'blog'> };
+const page = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang={page.data.lang || 'en'}>
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{page.data.title}</title>
+    <title>Document</title>
 </head>
 <body>
     <h1>{page.data.title}</h1>
     <h2>{page.data.author}</h2>
+    <h3>{page.data.date}</h3>
 </body>
 </html>

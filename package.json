@@ -1,5 +1,5 @@
 {
-  "name": "collections-test",
+  "name": "test-routing",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.5.3"
+    "@tailwindcss/vite": "^4.0.15",
+    "astro": "^5.5.4",
+    "tailwindcss": "^4.0.15"
   }
 }
