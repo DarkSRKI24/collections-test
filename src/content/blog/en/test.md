@@ -1,6 +1,6 @@
 ---
-title: Test title
-author: Test author
-date: Test date
+title: Test title - EN
+author: Test author - EN
+date: Test date - EN
 ---
 Test

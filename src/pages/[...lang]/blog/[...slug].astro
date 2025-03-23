@@ -5,8 +5,13 @@ export async function getStaticPaths() {
   const pages = await getCollection('blog');
 
   const paths = pages.map(page => {
-    const [lang, ...slug] = page.slug.split('/');
-    return { params: { lang, slug: slug.join('/') || undefined }, props: page };
+    const [lang, ...rest] = page.slug.split('/');
+    // If lang is "sr", don't include it in the URL
+    if (lang === 'sr') {
+      return { params: { slug: rest.join('/') || undefined }, props: page };
+    } else {
+      return { params: { lang, slug: rest.join('/') || undefined }, props: page };
+    }
   });
 
   return paths;
